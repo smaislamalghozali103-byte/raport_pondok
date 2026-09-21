@@ -466,9 +466,10 @@ export default function App() {
     const newSubjectId = `custom_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const newSubject: Subject = {
       id: newSubjectId,
-      number: nextNumber,
+      order: nextNumber,
+      nameId: `Mata Pelajaran ${nextNumber}`,
       nameAr: `مادة جديدة ${nextNumber}`,
-      nameLatin: `Mata Pelajaran ${nextNumber}`,
+      category: 'umum',
     };
     const updated = [...existingSubjects, newSubject];
 
@@ -498,7 +499,7 @@ export default function App() {
       .filter((s) => s.id !== subjectId)
       .map((s, idx) => ({
         ...s,
-        number: idx + 1, // renumber sequentially
+        order: idx + 1, // renumber sequentially
       }));
 
     setCustomClassSubjects((prev) => ({

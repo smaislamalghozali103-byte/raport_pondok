@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 interface SchoolLogoProps {
   className?: string;
@@ -7,10 +7,12 @@ interface SchoolLogoProps {
 }
 
 export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 85, idPrefix = 'school-logo' }) => {
-  const pentagonGlowId = `${idPrefix}-pentagonGlow`;
-  const ribbonGradId = `${idPrefix}-ribbonGrad`;
-  const goldKnobId = `${idPrefix}-goldKnob`;
-  const bannerTextPathId = `${idPrefix}-bannerTextPath`;
+  const autoId = useId().replace(/[^a-zA-Z0-9_-]/g, '');
+  const prefix = idPrefix ? `${idPrefix}_${autoId}` : `logo_${autoId}`;
+  const pentagonGlowId = `${prefix}-pentagonGlow`;
+  const ribbonGradId = `${prefix}-ribbonGrad`;
+  const goldKnobId = `${prefix}-goldKnob`;
+  const bannerTextPathId = `${prefix}-bannerTextPath`;
 
   return (
     <svg
@@ -68,7 +70,7 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
       {/* Inner Light-Green Pentagon Field */}
       <path
         d="M 100 13 L 187 78 L 153 189 L 47 189 L 13 78 Z"
-        fill={`url(#${pentagonGlowId})`}
+        fill={`url(#${pentagonGlowId}) #d5f0a8`}
       />
 
       {/* ================= 2. TOP FIVE-POINTED STAR ================= */}
@@ -87,7 +89,7 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
       <line x1="100" y1="56" x2="100" y2="108" stroke="#167a42" strokeWidth="0.8" />
 
       {/* Golden Ring at center of Pen */}
-      <circle cx="100" cy="114" r="5" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="1" />
+      <circle cx="100" cy="114" r="5" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="1" />
       <circle cx="100" cy="114" r="2.2" fill="#0f592f" />
 
       {/* Lower Pen shaft under book */}
@@ -102,9 +104,9 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
 
       {/* Double Golden Knob / Base at bottom of pen */}
       <g>
-        <rect x="92" y="137" width="16" height="7.5" rx="3.75" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="1" />
-        <circle cx="95" cy="140.75" r="3.2" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="0.8" />
-        <circle cx="105" cy="140.75" r="3.2" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="0.8" />
+        <rect x="92" y="137" width="16" height="7.5" rx="3.75" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="1" />
+        <circle cx="95" cy="140.75" r="3.2" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="0.8" />
+        <circle cx="105" cy="140.75" r="3.2" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="0.8" />
         <line x1="100" y1="137" x2="100" y2="144.5" stroke="#0f592f" strokeWidth="0.8" />
       </g>
 
@@ -276,13 +278,13 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
 
       {/* Three Connected Golden Rings / Chain Links in center */}
       <g>
-        <rect x="90" y="157" width="5.5" height="9" rx="2.5" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="0.9" />
+        <rect x="90" y="157" width="5.5" height="9" rx="2.5" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="0.9" />
         <rect x="91.5" y="159" width="2.5" height="5" rx="1.2" fill="#d5f0a8" />
 
-        <rect x="97" y="157" width="6" height="9" rx="2.5" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="0.9" />
+        <rect x="97" y="157" width="6" height="9" rx="2.5" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="0.9" />
         <rect x="98.5" y="159" width="3" height="5" rx="1.2" fill="#d5f0a8" />
 
-        <rect x="104.5" y="157" width="5.5" height="9" rx="2.5" fill={`url(#${goldKnobId})`} stroke="#0f592f" strokeWidth="0.9" />
+        <rect x="104.5" y="157" width="5.5" height="9" rx="2.5" fill={`url(#${goldKnobId}) #ffd700`} stroke="#0f592f" strokeWidth="0.9" />
         <rect x="106" y="159" width="2.5" height="5" rx="1.2" fill="#d5f0a8" />
       </g>
 
@@ -297,7 +299,7 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
       {/* Left swallowtail notch */}
       <path
         d="M 35 152 L 45 150 L 42 168 L 32 166 L 36 159 Z"
-        fill={`url(#${ribbonGradId})`}
+        fill={`url(#${ribbonGradId}) #ffea00`}
         stroke="#0f592f"
         strokeWidth="1"
       />
@@ -312,7 +314,7 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
       {/* Right swallowtail notch */}
       <path
         d="M 165 152 L 155 150 L 158 168 L 168 166 L 164 159 Z"
-        fill={`url(#${ribbonGradId})`}
+        fill={`url(#${ribbonGradId}) #ffea00`}
         stroke="#0f592f"
         strokeWidth="1"
       />
@@ -320,7 +322,7 @@ export const SchoolLogo: React.FC<SchoolLogoProps> = ({ className = '', size = 8
       {/* Main Curved Banner Body */}
       <path
         d="M 40 148 Q 100 178 160 148 L 155 162 Q 100 192 45 162 Z"
-        fill={`url(#${ribbonGradId})`}
+        fill={`url(#${ribbonGradId}) #ffea00`}
         stroke="#0f592f"
         strokeWidth="1.2"
       />

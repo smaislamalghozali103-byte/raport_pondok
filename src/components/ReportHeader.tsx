@@ -13,6 +13,7 @@ interface ReportHeaderProps {
   isPrintOnly?: boolean;
   onUpdateStudentName?: (newName: string) => void;
   onUpdateNisn?: (newNisn: string) => void;
+  logoIdPrefix?: string;
 }
 
 export const ReportHeader: React.FC<ReportHeaderProps> = ({
@@ -24,6 +25,7 @@ export const ReportHeader: React.FC<ReportHeaderProps> = ({
   isPrintOnly = false,
   onUpdateStudentName,
   onUpdateNisn,
+  logoIdPrefix,
 }) => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [nameVal, setNameVal] = useState(studentName);
